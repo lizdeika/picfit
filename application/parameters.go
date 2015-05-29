@@ -5,7 +5,7 @@ import (
 	"github.com/mitchellh/goamz/aws"
 	"github.com/thoas/gokvstores"
 	"github.com/lizdeika/gostorages"
-	"github.com/thoas/picfit/http"
+	"github.com/lizdeika/picfit/http"
 	"strconv"
 )
 

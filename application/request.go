@@ -3,10 +3,10 @@ package application
 import (
 	"github.com/thoas/gokvstores"
 	"github.com/thoas/muxer"
-	"github.com/thoas/picfit/engines"
-	"github.com/thoas/picfit/hash"
-	"github.com/thoas/picfit/signature"
-	"github.com/thoas/picfit/util"
+	"github.com/lizdeika/picfit/engines"
+	"github.com/lizdeika/picfit/hash"
+	"github.com/lizdeika/picfit/signature"
+	"github.com/lizdeika/picfit/util"
 	"net/http"
 	"net/url"
 )

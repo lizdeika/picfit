@@ -20,11 +20,11 @@ import (
 	"github.com/rs/cors"
 	"github.com/thoas/gokvstores"
 	"github.com/thoas/muxer"
-	"github.com/thoas/picfit/engines"
-	"github.com/thoas/picfit/extractors"
-	"github.com/thoas/picfit/hash"
-	"github.com/thoas/picfit/image"
-	"github.com/thoas/picfit/middleware"
+	"github.com/lizdeika/picfit/engines"
+	"github.com/lizdeika/picfit/extractors"
+	"github.com/lizdeika/picfit/hash"
+	"github.com/lizdeika/picfit/image"
+	"github.com/lizdeika/picfit/middleware"
 	"github.com/thoas/stats"
 )
 

@@ -3,8 +3,8 @@ package extractors
 import (
 	"fmt"
 	"github.com/thoas/muxer"
-	"github.com/thoas/picfit/engines"
-	"github.com/thoas/picfit/image"
+	"github.com/lizdeika/picfit/engines"
+	"github.com/lizdeika/picfit/image"
 	"mime"
 	"net/url"
 	"path/filepath"

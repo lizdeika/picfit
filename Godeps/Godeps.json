@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/thoas/picfit",
+	"ImportPath": "github.com/lizdeika/picfit",
 	"GoVersion": "go1.4.2",
 	"Deps": [
 		{

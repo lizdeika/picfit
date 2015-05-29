@@ -6,7 +6,7 @@ import (
 
 	"github.com/codegangsta/cli"
 	"github.com/lizdeika/picfit/application"
-	"github.com/thoas/picfit/signature"
+	"github.com/lizdeika/picfit/signature"
 )
 
 func main() {

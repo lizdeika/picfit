@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"github.com/mholt/binding"
 	"github.com/lizdeika/gostorages"
-	"github.com/thoas/picfit/image"
+	"github.com/lizdeika/picfit/image"
 	"io"
 	"mime/multipart"
 )

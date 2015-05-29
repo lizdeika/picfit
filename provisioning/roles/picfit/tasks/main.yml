@@ -5,7 +5,7 @@
   user: name=picfit group=admin
 
 - name: Installing from git repository
-  git: repo=https://github.com/thoas/picfit.git
+  git: repo=https://github.com/lizdeika/picfit.git
        dest={{ picfit_path }}
   tags:
     - prepare

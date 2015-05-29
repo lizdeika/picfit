@@ -1,9 +1,9 @@
 picfit
 ======
 
-.. image:: https://secure.travis-ci.org/thoas/picfit.png?branch=master
+.. image:: https://secure.travis-ci.org/lizdeika/picfit.png?branch=master
     :alt: Build Status
-    :target: http://travis-ci.org/thoas/picfit
+    :target: http://travis-ci.org/lizdeika/picfit
 
 .. image:: https://d262ilb51hltx0.cloudfront.net/max/800/1*oR04S6Ie7s1JctwjsDsN0w.png
 
@@ -30,7 +30,7 @@ Build it
 
 ::
 
-    git clone https://github.com/thoas/picfit.git
+    git clone https://github.com/lizdeika/picfit.git
 
 4. Run ``make build``
 
@@ -650,7 +650,7 @@ By default the format will be chosen in this order:
 
 * The ``fmt`` parameter if exists in query string
 * The original image format
-* The default format provided in the `application <https://github.com/thoas/picfit/blob/master/application/constants.go#L6>`_
+* The default format provided in the `application <https://github.com/lizdeika/picfit/blob/master/application/constants.go#L6>`_
 
 Upload
 ------
@@ -675,7 +675,7 @@ It's recommended that the application run behind a CDN for larger applications
 or behind varnish for smaller ones.
 
 Provisioning is handled by Ansible_, you will find files in
-the `repository <https://github.com/thoas/picfit/tree/master/provisioning>`_.
+the `repository <https://github.com/lizdeika/picfit/tree/master/provisioning>`_.
 
 You must have Ansible_ installed on your laptop, basically if you have python
 already installed you can do ::
@@ -695,7 +695,7 @@ The config is located to ``/etc/picfit/config.json`` on the vagrant box.
 Roadmap
 =======
 
-see `issues <https://github.com/thoas/picfit/issues>`_
+see `issues <https://github.com/lizdeika/picfit/issues>`_
 
 Don't hesitate to send patch or improvements.
 

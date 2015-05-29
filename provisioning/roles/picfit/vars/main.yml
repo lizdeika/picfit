@@ -1,2 +1,2 @@
 ---
-picfit_path: "{{ go_path }}/src/github.com/thoas/picfit"
+picfit_path: "{{ go_path }}/src/github.com/lizdeika/picfit"
