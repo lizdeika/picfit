@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/mitchellh/goamz/aws"
 	"github.com/thoas/gokvstores"
-	"github.com/thoas/gostorages"
+	"github.com/lizdeika/gostorages"
 	"github.com/thoas/picfit/http"
 	"strconv"
 )

@@ -1,7 +1,7 @@
 package image
 
 import (
-	"github.com/thoas/gostorages"
+	"github.com/lizdeika/gostorages"
 	"github.com/thoas/picfit/http"
 	"io/ioutil"
 	"net/url"

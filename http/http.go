@@ -3,7 +3,7 @@ package http
 import (
 	"fmt"
 	"github.com/franela/goreq"
-	"github.com/thoas/gostorages"
+	"github.com/lizdeika/gostorages"
 	"io/ioutil"
 	"net/http"
 	"net/url"

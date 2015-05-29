@@ -1,7 +1,7 @@
 package dummy
 
 import (
-	"github.com/thoas/gostorages"
+	"github.com/lizdeika/gostorages"
 	"time"
 )
 

@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/codegangsta/cli"
-	"github.com/thoas/picfit/application"
-	"github.com/thoas/picfit/signature"
 	"os"
+
+	"github.com/codegangsta/cli"
+	"github.com/lizdeika/picfit/application"
+	"github.com/thoas/picfit/signature"
 )
 
 func main() {

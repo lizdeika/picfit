@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/getsentry/raven-go"
 	"github.com/jmoiron/jsonq"
-	"github.com/thoas/gostorages"
+	"github.com/lizdeika/gostorages"
 	"github.com/thoas/picfit/dummy"
 	"github.com/thoas/picfit/engines"
 	"github.com/thoas/picfit/util"

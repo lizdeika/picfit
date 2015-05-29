@@ -3,7 +3,7 @@ package application
 import (
 	"bytes"
 	"github.com/mholt/binding"
-	"github.com/thoas/gostorages"
+	"github.com/lizdeika/gostorages"
 	"github.com/thoas/picfit/image"
 	"io"
 	"mime/multipart"
