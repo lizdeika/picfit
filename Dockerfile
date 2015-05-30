@@ -1,17 +1,9 @@
-FROM ubuntu:14.04
-MAINTAINER lizdeika
+FROM golang
 
-WORKDIR /opt/go/src/github.com/lizdeika/picfit
-ENV GOPATH /opt/go
+ADD . /go/src/github.com/lizdeika/picfit
+RUN go get github.com/lizdeika/picfit
+RUN cd /go/src/github.com/lizdeika/picfit && make build
 
-RUN apt-get update && apt-get install -qy \
-    build-essential \
-    git \
-    golang
+ENTRYPOINT ["/go/src/github.com/lizdeika/picfit/bin/picfit"]
 
-ADD . /opt/go/src/github.com/lizdeika/picfit
-RUN cd /opt/go/src/github.com/lizdeika/picfit && make deps && make build
-
-ENTRYPOINT ["/opt/go/src/github.com/lizdeika/picfit/bin/picfit"]
-
-EXPOSE 8080
+EXPOSE 3001
