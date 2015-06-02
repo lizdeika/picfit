@@ -16,15 +16,15 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/jmoiron/jsonq"
 	"github.com/lizdeika/gostorages"
-	"github.com/meatballhat/negroni-logrus"
-	"github.com/rs/cors"
-	"github.com/thoas/gokvstores"
-	"github.com/thoas/muxer"
 	"github.com/lizdeika/picfit/engines"
 	"github.com/lizdeika/picfit/extractors"
 	"github.com/lizdeika/picfit/hash"
 	"github.com/lizdeika/picfit/image"
 	"github.com/lizdeika/picfit/middleware"
+	"github.com/meatballhat/negroni-logrus"
+	"github.com/rs/cors"
+	"github.com/thoas/gokvstores"
+	"github.com/thoas/muxer"
 	"github.com/thoas/stats"
 )
 
@@ -319,7 +319,9 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 			}
 		}
 
+		fmt.Println(fileKey)
 		if cacheOriginal == true && fileKey != "" {
+
 			file.Key = fileKey
 			file.Storage = a.DestStorage
 			file.Filepath = fmt.Sprintf("%s.%s", a.ShardFilename(fileKey), file.Format())
