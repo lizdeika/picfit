@@ -319,9 +319,7 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 			}
 		}
 
-		fmt.Println(fileKey)
 		if cacheOriginal == true && fileKey != "" {
-
 			file.Key = fileKey
 			file.Storage = a.DestStorage
 			file.Filepath = fmt.Sprintf("%s.%s", a.ShardFilename(fileKey), file.Format())
