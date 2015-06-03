@@ -315,8 +315,13 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 				}
 			} else {
 				file, err = image.FromStorage(a.SourceStorage, req.Filepath)
+				fmt.Println(req.Filepath)
 				cacheOriginal = true
 			}
+		}
+
+		if err != nil {
+			return nil, err
 		}
 
 		if cacheOriginal == true && fileKey != "" {
