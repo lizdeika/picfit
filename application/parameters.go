@@ -2,7 +2,7 @@ package application
 
 import (
 	"fmt"
-	"github.com/mitchellh/goamz/aws"
+	"github.com/lizdeika/goamz/aws"
 	"github.com/thoas/gokvstores"
 	"github.com/lizdeika/gostorages"
 	"github.com/lizdeika/picfit/http"
