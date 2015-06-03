@@ -1,0 +1,11 @@
+picfit:
+  build: .
+  ports:
+   - "8080:8080"
+  volumes:
+   - ~/picfit/config.json:/etc/picfit/config.json
+   - ~/picfit/data:/var/data/picfit
+  links:
+   - redis
+redis:
+  image: redis
