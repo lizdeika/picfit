@@ -3,7 +3,7 @@ picfit:
   ports:
    - "8080:8080"
   volumes:
-   - ~/picfit/config.json:/etc/picfit/config.json
+   - ~/picfit/config.json:/etc/picfit/config.json:ro
    - ~/picfit/data:/var/data/picfit
   links:
    - redis
