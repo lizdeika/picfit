@@ -2,24 +2,36 @@ package application
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"github.com/mholt/binding"
 	"github.com/thoas/muxer"
-	"net/http"
 )
 
 func NotFoundHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		http.Error(w, "404 not found", http.StatusNotFound)
+		http.Error(w, "404 Not found", http.StatusNotFound)
 	})
 }
 
 type Handler func(muxer.Response, *Request, *Application)
 
 var ImageHandler Handler = func(res muxer.Response, req *Request, app *Application) {
+	debug, err := app.Jq.Bool("debug")
+
+	if err != nil {
+		debug = false
+	}
+
 	file, err := app.ImageFileFromRequest(req, true, true)
 
 	if err != nil {
-		panic(err)
+		if debug {
+			panic(err)
+		} else {
+			res.Abort(404, "404 Not found")
+			return
+		}
 	}
 
 	res.SetHeaders(file.Headers, true)

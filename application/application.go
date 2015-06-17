@@ -3,6 +3,7 @@ package application
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -279,7 +280,8 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 		fileKey := ""
 		kvKey := ""
 		if req.URL != nil {
-			fileKey = hash.Tokey(hash.Serialize(req.URL))
+			return nil, errors.New("404")
+			/*fileKey = hash.Tokey(hash.Serialize(req.URL))
 			kvKey = a.WithPrefix(fileKey)
 			fileStored, err := gokvstores.String(req.Connection.Get(kvKey))
 			if fileStored != "" {
@@ -296,7 +298,7 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 			} else {
 				file, err = image.FromURL(req.URL)
 				cacheOriginal = true
-			}
+			}*/
 		} else {
 			// URL provided we use http protocol to retrieve it
 			fileKey = hash.Tokey(hash.Serialize(req.Filepath))
