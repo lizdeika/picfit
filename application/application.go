@@ -107,7 +107,7 @@ func (app *Application) ServeHTTP(h Handler) http.Handler {
 
 		res := muxer.NewResponse(w)
 
-		request, err := NewRequest(req, con)
+		request, err := NewRequest(req, con, app.Jq)
 
 		if err != nil {
 			app.Logger.Error(err)
@@ -354,6 +354,8 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 		} else {
 			stored = "do not store"
 		}
+
+		// file, err = a.Engine.Transform(file, req.Operation, req.QueryString)
 
 		if err != nil {
 			return nil, err
