@@ -267,56 +267,52 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 		if load {
 			file, err = image.FromStorage(a.DestStorage, stored)
 
-			if err != nil {
-				return nil, err
+			if file == nil || err != nil {
+				stored = ""
+				err = nil
 			}
+
+			// if err != nil {
+			// 	return nil, err
+			// }
 		}
-	} else {
-		a.Logger.Infof("Key %s not found in kvstore", key)
+	}
+
+	if stored == "" {
+		a.Logger.Infof("Key %s not found in kvstore OR file not found in dst", key)
 
 		// Image not found from the KVStore, we need to process it
-		// URL available in Query String
+		// URL or Path available in Query String
 		cacheOriginal := false
 		fileKey := ""
 		kvKey := ""
 		if req.URL != nil {
 			return nil, errors.New("404")
-			/*fileKey = hash.Tokey(hash.Serialize(req.URL))
-			kvKey = a.WithPrefix(fileKey)
-			fileStored, err := gokvstores.String(req.Connection.Get(kvKey))
-			if fileStored != "" {
-				a.Logger.Infof("Key %s found in kvstore: %s", kvKey, fileStored)
-
-				if load {
-					file, err = image.FromStorage(a.DestStorage, fileStored)
-
-					if err != nil {
-						file, err = image.FromURL(req.URL)
-						cacheOriginal = true
-					}
-				}
-			} else {
-				file, err = image.FromURL(req.URL)
-				cacheOriginal = true
-			}*/
 		} else {
 			// URL provided we use http protocol to retrieve it
 			fileKey = hash.Tokey(hash.Serialize(req.Filepath))
 			kvKey = a.WithPrefix(fileKey)
 			fileStored, err := gokvstores.String(req.Connection.Get(kvKey))
 			if fileStored != "" {
-				a.Logger.Infof("Key %s found in kvstore: %s", kvKey, fileStored)
+				a.Logger.Infof("Key %s for original found in kvstore: %s", kvKey, fileStored)
 
 				if load {
 					file, err = image.FromStorage(a.DestStorage, fileStored)
-
-					if err != nil {
+					// not found in dest storage? Try getting from src storage
+					if file == nil || err != nil {
+						a.Logger.Infof("File %s for key %s not found in dst, try reget from src", fileStored, kvKey)
 						file, err = image.FromStorage(a.SourceStorage, req.Filepath)
+						if file == nil {
+							return nil, errors.New("404")
+						}
 						cacheOriginal = true
 					}
 				}
 			} else {
 				file, err = image.FromStorage(a.SourceStorage, req.Filepath)
+				if file == nil {
+					return nil, errors.New("404")
+				}
 				cacheOriginal = true
 			}
 		}
