@@ -147,6 +147,9 @@ func (a *Application) InitRouter() *negroni.Negroni {
 		router.Handle(fmt.Sprintf("/%s/{op}/x{h:[\\d]+}/{path:[\\w\\-/.]+}", name), handlerFunc)
 		router.Handle(fmt.Sprintf("/%s/{op}/{w:[\\d]+}x/{path:[\\w\\-/.]+}", name), handlerFunc)
 		router.Handle(fmt.Sprintf("/%s/{op}/{w:[\\d]+}x{h:[\\d]+}/{path:[\\w\\-/.]+}", name), handlerFunc)
+
+		router.Handle(fmt.Sprintf("/%s/{w:[\\d]+}x{h:[\\d]+}/{path:[\\w\\-/.]+}", name), handlerFunc)
+		router.Handle(fmt.Sprintf("/%s/{path:[\\w\\-/.]+}", name), handlerFunc)
 	}
 
 	router.Handle("/upload", http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
