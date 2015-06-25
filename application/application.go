@@ -352,13 +352,18 @@ func (a *Application) ImageFileFromRequest(req *Request, async bool, load bool) 
 		if err != nil {
 			return nil, err
 		}
-		if rw < width && rh < height {
-			file, err = a.Engine.Transform(file, req.Operation, req.QueryString)
-		} else {
-			stored = "do not store"
+		// if rw < width && rh < height {
+		// 	file, err = a.Engine.Transform(file, req.Operation, req.QueryString)
+		// } else {
+		// 	stored = "do not store"
+		// }
+		if rw > width {
+			req.QueryString["w"] = strconv.Itoa(width)
 		}
-
-		// file, err = a.Engine.Transform(file, req.Operation, req.QueryString)
+		if rh > height {
+			req.QueryString["h"] = strconv.Itoa(height)
+		}
+		file, err = a.Engine.Transform(file, req.Operation, req.QueryString)
 
 		if err != nil {
 			return nil, err
