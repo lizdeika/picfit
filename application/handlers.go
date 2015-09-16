@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/mholt/binding"
 	"github.com/thoas/muxer"
 )
 
@@ -38,44 +37,44 @@ var ImageHandler Handler = func(res muxer.Response, req *Request, app *Applicati
 	res.ResponseWriter.Write(file.Content())
 }
 
-var UploadHandler = func(res muxer.Response, req *http.Request, app *Application) {
-	if !app.EnableUpload {
-		res.Forbidden()
-		return
-	}
-
-	if app.SourceStorage == nil {
-		res.Abort(500, "Your application doesn't have a source storage")
-		return
-	}
-
-	var err error
-
-	multipartForm := new(MultipartForm)
-	errs := binding.Bind(req, multipartForm)
-	if errs.Handle(res) {
-		return
-	}
-
-	file, err := multipartForm.Upload(app.SourceStorage)
-
-	if err != nil {
-		panic(err)
-	}
-
-	content, err := json.Marshal(map[string]string{
-		"filename": file.Filename(),
-		"path":     file.Path(),
-		"url":      file.URL(),
-	})
-
-	if err != nil {
-		panic(err)
-	}
-
-	res.ContentType("application/json")
-	res.ResponseWriter.Write(content)
-}
+// var UploadHandler = func(res muxer.Response, req *http.Request, app *Application) {
+// 	if !app.EnableUpload {
+// 		res.Forbidden()
+// 		return
+// 	}
+//
+// 	if app.SourceStorage == nil {
+// 		res.Abort(500, "Your application doesn't have a source storage")
+// 		return
+// 	}
+//
+// 	var err error
+//
+// 	multipartForm := new(MultipartForm)
+// 	errs := binding.Bind(req, multipartForm)
+// 	if errs.Handle(res) {
+// 		return
+// 	}
+//
+// 	file, err := multipartForm.Upload(app.SourceStorage)
+//
+// 	if err != nil {
+// 		panic(err)
+// 	}
+//
+// 	content, err := json.Marshal(map[string]string{
+// 		"filename": file.Filename(),
+// 		"path":     file.Path(),
+// 		"url":      file.URL(),
+// 	})
+//
+// 	if err != nil {
+// 		panic(err)
+// 	}
+//
+// 	res.ContentType("application/json")
+// 	res.ResponseWriter.Write(content)
+// }
 
 var GetHandler Handler = func(res muxer.Response, req *Request, app *Application) {
 	file, err := app.ImageFileFromRequest(req, false, false)
