@@ -1,4 +1,4 @@
-FROM golang:1.4.2-wheezy
+FROM golang:1.5.1-wheezy
 
 RUN go get github.com/lizdeika/picfit
 RUN cd /go/src/github.com/lizdeika/picfit && make build
