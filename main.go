@@ -5,11 +5,15 @@ import (
 	"os"
 
 	"github.com/codegangsta/cli"
+	"github.com/honeybadger-io/honeybadger-go"
 	"github.com/lizdeika/picfit/application"
 	"github.com/lizdeika/picfit/signature"
 )
 
 func main() {
+	honeybadger.Configure(honeybadger.Configuration{APIKey: "11b9f693"})
+	defer honeybadger.Monitor()
+
 	app := cli.NewApp()
 	app.Name = "picfit"
 	app.Author = "thoas"

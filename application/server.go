@@ -2,10 +2,13 @@ package application
 
 import (
 	"fmt"
-	"github.com/facebookgo/grace/gracehttp"
+	"log"
 	"net/http"
 	"runtime"
 	"strconv"
+
+	"github.com/facebookgo/grace/gracehttp"
+	"github.com/honeybadger-io/honeybadger-go"
 )
 
 func Run(path string) error {
@@ -21,7 +24,7 @@ func Run(path string) error {
 
 	server := &http.Server{Addr: fmt.Sprintf(":%s", strconv.Itoa(app.Port())), Handler: n}
 
-	gracehttp.Serve(server)
+	log.Fatal(gracehttp.Serve(server), honeybadger.Handler(n))
 
 	return nil
 }
