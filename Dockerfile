@@ -1,7 +1,5 @@
 FROM golang:1.5.1-wheezy
 
-RUN echo "vm.max_map_count=262120" >> /etc/sysctl.conf
-
 ENV HONEYBADGER_ENV production
 
 RUN go get github.com/lizdeika/picfit
