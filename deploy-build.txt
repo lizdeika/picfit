@@ -1,1 +1,1 @@
-env GOOS=linux GOARCH=amd64 go build -o release/linux-amd64/picfit main.go
+env GOOS=linux GOARCH=amd64 go build -o release/linux-amd64/VERSION/picfit main.go
